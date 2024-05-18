@@ -1,3 +1,4 @@
 # Ignore .xlsx .ods files
-*.xlsx
+#*.xlsx
 *.ods
+*.DS_Store

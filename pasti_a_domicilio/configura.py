@@ -2,11 +2,18 @@ import os
 import numpy as np
 import pandas as pd
 
-print(os.getcwd())
-os.chdir('/examples')
-print(os.getcwd())
-df = pd.read_excel('/examples/example_table.xlsx')
+this_menu = pd.read_excel('examples/menù.xlsx', na_values='NaN')
+
+# Print the first 5 rows of the DataFrame
+print(this_menu.head())
+print(this_menu.shape[1])
+
+for i, row in this_menu.iterrows():
+    #if sum([np.isnan(el) for el in row]) == this_menu.shape[1]:
+    if i == 3:
+        print([np.isnan(el) for el in row])
+    #if sum([np.isnan(el) for el in row]) == this_menu.shape[1]:
+    #    this_menu.drop(i)
 
 
-# Print the first few rows of the DataFrame
-print(df.head())
+print(this_menu.shape)
