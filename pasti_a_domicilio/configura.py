@@ -1,19 +1,16 @@
-import os
+
 import numpy as np
 import pandas as pd
-
-this_menu = pd.read_excel('examples/menù.xlsx', na_values='NaN')
-
-# Print the first 5 rows of the DataFrame
-print(this_menu.head())
-print(this_menu.shape[1])
-
-for i, row in this_menu.iterrows():
-    #if sum([np.isnan(el) for el in row]) == this_menu.shape[1]:
-    if i == 3:
-        print([np.isnan(el) for el in row])
-    #if sum([np.isnan(el) for el in row]) == this_menu.shape[1]:
-    #    this_menu.drop(i)
+from pathlib import Path
 
 
-print(this_menu.shape)
+def read_menu(menu_path: Path, na_values: str = "Nan") -> pd.DataFrame:
+    my_menu = pd.DataFrame(pd.read_excel(menu_path, na_values=na_values))
+
+    # Drop all columns that have only Nan values
+    my_menu = my_menu.dropna(axis=1, how="all")
+
+    # Drop all row that have only Nan values
+    my_menu = my_menu.dropna(axis=0, how="all")
+
+    return my_menu
