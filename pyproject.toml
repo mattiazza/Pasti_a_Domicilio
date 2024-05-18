@@ -10,8 +10,12 @@ python = "^3.12"
 pandas = "^2.2.2"
 numpy = "^1.26.4"
 openpyxl = "^3.1.2"
+ipykernel = "^6.29.4"
 
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.4.4"
+rich = "^13.7.1"
 
 [build-system]
 requires = ["poetry-core"]
